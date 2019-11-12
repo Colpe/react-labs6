@@ -1,7 +1,12 @@
 import React from 'react'
+import ListPeople from './ListPeople'
+
 
 const App = () => (
-  <h1>Minimal React</h1>  
+
+  <div>
+    <ListPeople />
+  </div>
 )
 
 export default App
