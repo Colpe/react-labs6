@@ -9,13 +9,15 @@ class ListPeople extends React.Component {
         super(props);
         this.state = {
             dataSource: [],
-            isLoading:true
-            
+            isLoading: true
         }
-
     }
 
     componentDidMount() {
+        this.setData();
+    }
+
+    setData = () => {
         fetch("http://localhost:3000/employees")
             .then(resp => {
                 return resp.json();
@@ -23,18 +25,26 @@ class ListPeople extends React.Component {
             .then(source => {
                 console.log(source)
                 this.setState({
-                    dataSource: source, 
+                    dataSource: source,
                     isLoading: false
                 });
             }
             );
+    }
 
+
+    reload = () => {
+        this.setState({
+            dataSource: [],
+            isLoading: true
+        })
+        this.setData();
     }
 
     render() {
-
         return this.state.isLoading ?
             (<div>
+                <h2>Employees List</h2>
                 <p>Loading...</p>
             </div>
             )
@@ -56,8 +66,10 @@ class ListPeople extends React.Component {
 
                         {
                             this.state.dataSource.map(p => {
-                                return <Employee key={p.id}
+                                return <Employee
+                                    key={p.id}
                                     person={p}
+                                    reload={this.reload}
                                 />
                             })
                         }
