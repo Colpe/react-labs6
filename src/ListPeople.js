@@ -2,13 +2,14 @@ import React from 'react'
 import Employee from './Employee'
 
 
+
 class ListPeople extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: [],
-            isLoading: true
+            dataSource: []
+            
         }
 
     }
@@ -54,7 +55,7 @@ class ListPeople extends React.Component {
 
                         {
                             this.state.dataSource.map(p => {
-                                return <Employee key={p._id}
+                                return <Employee key={p.id}
                                     person={p}
                                 />
                             })

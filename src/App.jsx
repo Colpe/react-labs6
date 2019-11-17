@@ -1,11 +1,10 @@
 import React from 'react'
-import ListPeople from './ListPeople'
-
+import EmployeeManager from './EmployeeManager'
 
 const App = () => (
 
   <div>
-    <ListPeople />
+    <EmployeeManager />
   </div>
 )
 
