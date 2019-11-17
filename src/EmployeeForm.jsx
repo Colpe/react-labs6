@@ -10,11 +10,22 @@ class EmployeeForm extends React.Component {
             age: 20,
             isActive: true,
             company: "",
-            email: ""
+            email: "",
+            loading: false
         }
     }
 
     createNewEmoplyee = () => {
+        this.setState({
+            loading: true
+        })
+        const employee = {
+            name: this.state.name,
+            age: this.state.age,
+            isActive: this.state.isActive,
+            company: this.state.company,
+            email: this.state.email
+        }
 
         fetch('http://localhost:3000/employees', {
             method: 'POST',
@@ -22,7 +33,7 @@ class EmployeeForm extends React.Component {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(employee)
         })
             .then(response => {
                 response.json();
@@ -31,22 +42,26 @@ class EmployeeForm extends React.Component {
     }
 
     render() {
-
+        if(this.state.loading){
+            return (
+                <label>Saving...</label>
+            )
+        }
         return (
             <div>
-                <p>Name 
+                <p>Name
                 <input onChange={(e) => { this.setState({ name: e.target.value }) }} />
                 </p>
-                <p>Age 
+                <p>Age
                 <input defaultValue={this.state.age} type="number" onChange={(e) => { this.setState({ age: e.target.value }) }} />
                 </p>
-                <p>Active 
+                <p>Active
                 <input defaultChecked={this.state.isActive} type="checkbox" onChange={(e) => { this.setState({ isActive: e.target.checked }) }} />
                 </p>
-                <p>Company 
+                <p>Company
                 <input onChange={(e) => { this.setState({ company: e.target.value }) }} />
                 </p>
-                <p>Email 
+                <p>Email
                 <input onChange={(e) => { this.setState({ email: e.target.value }) }} />
                 </p>
                 <button onClick={this.props.returnToList} >Cancel</button>

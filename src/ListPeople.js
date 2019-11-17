@@ -8,7 +8,8 @@ class ListPeople extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: []
+            dataSource: [],
+            isLoading:true
             
         }
 
