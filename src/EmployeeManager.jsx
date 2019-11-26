@@ -1,6 +1,5 @@
 import React from 'react'
-import ListPeople from './ListPeople'
-import EmployeeForm from './EmployeeForm'
+import PageEmployeesList from './PageEmployeesList'
 
 const modes = {
   list: 'list',
@@ -27,15 +26,14 @@ class EmployeeManager extends React.Component {
     console.log(this.state.mode)
     return this.state.mode == modes.list ? (
       <div>
-        <ListPeople />
+        <PageEmployeesList />
         <br />
         <button onClick={() => { this.changeMode(modes.create); }} >Add employee</button>
       </div>
     ) :
       (
         <div>
-          <EmployeeForm
-            returnToList={()=>this.changeMode(modes.list)}
+          <PageEmployee
           />
         </div>
       );

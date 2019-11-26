@@ -64,7 +64,7 @@ class EmployeeForm extends React.Component {
                 <p>Email
                 <input onChange={(e) => { this.setState({ email: e.target.value }) }} />
                 </p>
-                <button onClick={this.props.returnToList} >Cancel</button>
+                {/* <button onClick={this.props.returnToList} >Cancel</button> */}
                 <button onClick={this.createNewEmoplyee} >Add employee</button>
 
             </div>
