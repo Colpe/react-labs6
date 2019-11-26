@@ -5,11 +5,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link 
+  Link ,
+  withRouter
 } from "react-router-dom"
 
 const App = () => (
-  <div>
         <Router>
           <Switch>
             <Route exact path="/">
@@ -20,7 +20,6 @@ const App = () => (
             </Route>
           </Switch>
         </Router>
-  </div>
 )
 
 export default App

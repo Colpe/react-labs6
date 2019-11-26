@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import { Link, withRouter } from "react-router-dom"
 
 
 class EmployeeForm extends React.Component {
@@ -39,11 +39,12 @@ class EmployeeForm extends React.Component {
         })
             .then(response => {
                 response.json();
-            })
+                this.props.history.push('/');
+            });
     }
 
     render() {
-        if(this.state.loading){
+        if (this.state.loading) {
             return (
                 <label>Saving...</label>
             )
@@ -66,11 +67,11 @@ class EmployeeForm extends React.Component {
                 <input onChange={(e) => { this.setState({ email: e.target.value }) }} />
                 </p>
                 <Link to="/" ><button>Cancel</button></Link>
-                <Link to="/" onClick={this.createNewEmoplyee} ><button>Add employee</button></Link>
+                <button onClick={this.createNewEmoplyee}>Add employee</button>
 
             </div>
         );
     }
 }
 
-export default EmployeeForm;
+export default withRouter(EmployeeForm);
