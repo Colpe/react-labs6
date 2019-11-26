@@ -1,10 +1,25 @@
 import React from 'react'
-import EmployeeManager from './EmployeeManager'
+import PageEmployeesList from './PageEmployeesList'
+import PageEmployee from './PageEmployee'
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link 
+} from "react-router-dom"
 
 const App = () => (
-
   <div>
-    <EmployeeManager />
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <PageEmployeesList />
+            </Route>
+            <Route path="/new">
+              <PageEmployee />
+            </Route>
+          </Switch>
+        </Router>
   </div>
 )
 
