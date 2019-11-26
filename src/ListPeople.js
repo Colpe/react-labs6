@@ -1,6 +1,6 @@
 import React from 'react'
 import Employee from './Employee'
-
+import {Link} from "react-router-dom"
 
 
 class ListPeople extends React.Component {
@@ -75,6 +75,7 @@ class ListPeople extends React.Component {
                         }
                     </tbody>
                 </table>
+                <Link to="/new"><button>Create new</button></Link>
             </div>
             );
     }

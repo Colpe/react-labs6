@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 
 
 class EmployeeForm extends React.Component {
@@ -26,6 +27,7 @@ class EmployeeForm extends React.Component {
             company: this.state.company,
             email: this.state.email
         }
+        console.log(employee)
 
         fetch('http://localhost:3000/employees', {
             method: 'POST',
@@ -37,7 +39,6 @@ class EmployeeForm extends React.Component {
         })
             .then(response => {
                 response.json();
-                this.props.returnToList();
             })
     }
 
@@ -64,8 +65,8 @@ class EmployeeForm extends React.Component {
                 <p>Email
                 <input onChange={(e) => { this.setState({ email: e.target.value }) }} />
                 </p>
-                {/* <button onClick={this.props.returnToList} >Cancel</button> */}
-                <button onClick={this.createNewEmoplyee} >Add employee</button>
+                <Link to="/" ><button>Cancel</button></Link>
+                <Link to="/" onClick={this.createNewEmoplyee} ><button>Add employee</button></Link>
 
             </div>
         );
